@@ -2,9 +2,15 @@ import discord
 from discord.ext.commands import Bot
 import random
 
-bot = Bot(command_prefix='!')
-TOKEN = 'TOKEN HERE'
 
+
+def getToken():
+    with open("token.txt", "r") as f:
+        lines = f.readlines()
+        return lines[0].strip()
+
+bot = Bot(command_prefix='!')
+TOKEN = getToken()
 @bot.event
 async def on_ready():
     print('Logged in as')
