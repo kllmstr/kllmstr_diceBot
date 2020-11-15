@@ -3,7 +3,7 @@ from discord.ext.commands import Bot
 import random
 
 bot = Bot(command_prefix='!')
-TOKEN = 'Nzc0OTg2NDE4NTczMTQ4MTYx.X6fwWA.PjgwNf0gETJp38kWxk75rBMMxxI'
+TOKEN = 'TOKEN HERE'
 
 @bot.event
 async def on_ready():
