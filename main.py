@@ -1,16 +1,13 @@
 import discord
 from discord.ext.commands import Bot
 import random
+import os
 
+from dotenv import load_dotenv
 
-
-def getToken():
-    with open("token.txt", "r") as f:
-        lines = f.readlines()
-        return lines[0].strip()
-
+load_dotenv()
 bot = Bot(command_prefix='!')
-TOKEN = getToken()
+TOKEN = os.getenv('DISCORD_BOT_TOKEN')
 @bot.event
 async def on_ready():
     print('Logged in as')
