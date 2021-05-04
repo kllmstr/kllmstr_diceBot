@@ -29,6 +29,14 @@ async def commandList(ctx):
                            '!roll => Lance des dés classiques \n'
                            '!rollsw => Lance des dés spéciaux liés au JDR star wars l\'ére de la rébélion')
 
+@bot.command(name='reponds')
+async def hello(ctx, *, user: discord.Member = None):
+    if user:
+        for i in range(0,10):
+            await ctx.send(f"VIENS ICI TT DE SUITE, {user.mention}")
+    else:
+        await ctx.send('Désignes quelq\'un fils de p*te !')
+
 @bot.command(name='roll', help='Lance des dés classiques d6 d8 d12 d100 etc\ne.g. !roll 5d20 lance 5 dés à 20 faces, donne le résultat de chaque dé ainsi que leur somme')
 async def classicalRoll(ctx, arg, *gargs):
     err = False
@@ -179,13 +187,13 @@ async def starwarsRoll(ctx, *args):
             triomphe -= 1
 
     for val in destin:
-        if val in range(1, 6):
+        if val == 1 or val == 2 or val == 3 or val == 4 or val == 5 or val == 6:
             ptNoir += 1
         elif val == 7:
             ptNoir += 2
         elif val == 8 or val == 9:
             ptBlanc += 1
-        elif val in range(10, 12):
+        elif val == 10 or val == 11 or val == 12:
             ptBlanc += 2
 
     succesMsg = ''
@@ -216,5 +224,6 @@ async def starwarsRoll(ctx, *args):
         await ctx.channel.send(f'{ctx.author.mention} {succesMsg} {avantageMsg} {triompheMsg} ')
                                # f'Succes:{succes} avantage:{avantage} triomphe:{triomphe} \n'
                            # f'fortune:{fortune} infortune:{infortune} aptitude:{aptitude} difficulte:{difficulte} maitrise:{maitrise} defi:{defi} destin:{destin}')
+
 
 bot.run(TOKEN)
